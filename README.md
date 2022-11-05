@@ -79,6 +79,14 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
         </sub>
       </a>
     </td>
+    <td align="center">
+      <a href="https://github.com/thiagobrunoms">
+        <img src="https://avatars.githubusercontent.com/u/8793313?v=4" width="100px;" alt=""/><br>
+        <sub>
+          <b>Thiago de Sales</b>
+        </sub>
+      </a>
+    </td>
   </tr>
 </table>
 
