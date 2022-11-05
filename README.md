@@ -4,13 +4,13 @@
 
 > O projeto consiste, em criar um sistema utlizando a linguagem de programação orientada a objetos JAVA, O sistema terá a função de corresponder a necessidade de aluguel de carros, onde a empresa que expandir seu negócio para o novo mundo tecnológico e atrair mais cliente a alugar carros através do site da locadora de veículos, se tornado mais pratico ao cliente e aumentando seus lucros acompanhado o mercado tecnológico que esta se expandindo rapidamente.
 
-## 💻 Funcionalidades
+## 👀 Funcionalidades
 * Aluguel: terá a opção de aluguel, onde poderá alugar por hora, dia com preços dinâmico perante o tempo de contrato com funcionalidade de exlcuir, incluir, alterar opções de 'regra' de conbrança.
 * Carros: Variedades na disponilização dos mais diversos tipos de carros com funcionalidade de exlcuir, incluir, alterar
 * Pessoas: As pessoas veram e usaram a versão para o cliente final, onde poderá alugar, pagar, escolher e etc...
 
 
-## Ajustes e melhorias
+## 🔧 Ajustes e melhorias
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
