@@ -16,7 +16,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [ ] Tarefa 1
 - [ ] Tarefa 2
 
-Features Futuras
+Ajustes e melhorias Futuras
 - [ ] Tarefa 3
 
 ## 💻 Pré-requisitos
