@@ -7,18 +7,17 @@
 ## 👀 Funcionalidades
 * Aluguel: terá a opção de aluguel, onde poderá alugar por hora, dia com preços dinâmico perante o tempo de contrato com funcionalidade de exlcuir, incluir, alterar opções de 'regra' de conbrança.
 * Carros: Variedades na disponilização dos mais diversos tipos de carros com funcionalidade de exlcuir, incluir, alterar
-* Pessoas: As pessoas veram e usaram a versão para o cliente final, onde poderá alugar, pagar, escolher e etc...
+* Pessoas: As pessoas veram e usaram a versão para o cliente final, onde poderá alugar, pagar, escolher e etc... 
 
-
-## 🔧 Ajustes e melhorias
+## 🔧 Ajustes e melhorias - Andamento
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
-- [x] Tarefa 1
-- [x] Tarefa 2
-- [x] Tarefa 3
-- [ ] Tarefa 4
-- [ ] Tarefa 5
+- [ ] Tarefa 1
+- [ ] Tarefa 2
+
+Features Futuras
+- [ ] Tarefa 3
 
 ## 💻 Pré-requisitos
 
