@@ -22,43 +22,43 @@ public abstract class Carro {
         return ID;
     }
     public void setID(String iD) {
-        ID = iD;
+        this.ID = iD;
     }
     public String getBrand() {
         return Brand;
     }
     public void setBrand(String brand) {
-        Brand = brand;
+        this.Brand = brand;
     }
     public String getModel() {
         return Model;
     }
     public void setModel(String model) {
-        Model = model;
+        this.Model = model;
     }
     public int getYear() {
         return Year;
     }
     public void setYear(int year) {
-        Year = year;
+        this.Year = year;
     }
     public String getPrice() {
         return Price;
     }
     public void setPrice(String price) {
-        Price = price;
+        this.Price = price;
     }
     public String getType() {
         return Type;
     }
     public void setType(String type) {
-        Type = type;
+        this.Type = type;
     }
     public String getDepartment() {
         return Department;
     }
     public void setDepartment(String department) {
-        Department = department;
+        this.Department = department;
     }
 
 }
