@@ -1,64 +1,105 @@
-public abstract class Carro {
-    private String ID;
-    private String Brand;
-    private String Model;
-    private int Year;
-    private String Price;
-    private String Type;
-    private String Department;
+package model.Carro;
 
-    public Carro(String brand, String model, int year, String price, String type, String department) {
-       
-        this.Brand = brand;
-        this.Model = model;
-        this.Year = year;
-        this.Price = price;
-        this.Type = type;
-        this.Department = department;
+public class Carro {
+private int ID;
+private String Brand;
+private String Model;
+private int Year;
+private int Price;
+private String Type;
+private int Department;
+private boolean available;
 
-    }
 
-    public String getID() {
-        return ID;
-    }
-    public void setID(String iD) {
-        this.ID = iD;
-    }
-    public String getBrand() {
-        return Brand;
-    }
-    public void setBrand(String brand) {
-        this.Brand = brand;
-    }
-    public String getModel() {
-        return Model;
-    }
-    public void setModel(String model) {
-        this.Model = model;
-    }
-    public int getYear() {
-        return Year;
-    }
-    public void setYear(int year) {
-        this.Year = year;
-    }
-    public String getPrice() {
-        return Price;
-    }
-    public void setPrice(String price) {
-        this.Price = price;
-    }
-    public String getType() {
-        return Type;
-    }
-    public void setType(String type) {
-        this.Type = type;
-    }
-    public String getDepartment() {
-        return Department;
-    }
-    public void setDepartment(String department) {
-        this.Department = department;
-    }
 
+public Carro(String brand, String model, int year, int price, String type, int department) {
+    this.Brand = brand;
+    this.Model = model;
+    this.Year = year;
+    this.Price = price;
+    this.Type = type;
+    this.Department = department;
+    this.available = true;
+}
+
+public boolean Edit(String brand, String model, int year, int price, String type, int department) {
+    
+    Carro old;
+    Carro now;
+    old = this;
+    if((brand != null) & (brand == "")){
+        Brand = brand;
+    }
+    if((model != null) & (model == "")){
+        Model = model;
+    }
+    if((year != 0)){
+        Year = year;
+    }
+    if((price != 0)){
+        Price = price;
+    }
+    if((type != null) & (type == "")){
+        Type = type;
+    }
+    if((department != 0)){
+        Department = department;
+    }
+    now = this;
+    Carros.update(old, now);
+    return true;
+}
+
+public int getID() {
+    return ID;
+}
+public void setID(int iD) {
+    ID = iD;
+}
+public String getBrand() {
+    return Brand;
+}
+public void setBrand(String brand) {
+    Brand = brand;
+}
+public String getModel() {
+    return Model;
+}
+public void setModel(String model) {
+    Model = model;
+}
+public int getYear() {
+    return Year;
+}
+public void setYear(int year) {
+    Year = year;
+}
+public int getPrice() {
+    return Price;
+}
+public void setPrice(int price) {
+    Price = price;
+}
+public String getType() {
+    return Type;
+}
+public void setType(String type) {
+    Type = type;
+}
+public int getDepartment() {
+    return Department;
+}
+public void setDepartment(int department) {
+    Department = department;
+}
+
+public boolean isAvailable() {
+    return available;
+}
+
+public void setAvailable(boolean available) {
+    this.available = available;
+}
+
+  
 }
