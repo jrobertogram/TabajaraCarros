@@ -1,18 +1,13 @@
-public abstract class Cliente {
-  
-    private int ID;
-    private String Name;
-    private String Document;
-    private String City;
-    private String Type;
+package model.Cliente;
 
-    public Cliente( String name, String document, String city, String type) {
-      Name = name;
-      Document = document;
-      City = city;
-      Type = type;
-    }
-  
+public abstract class Cliente {
+    
+    protected int ID;
+    protected String Name;
+    protected String Document;
+    protected String City;
+    protected String Type;
+
     public int getID() {
         return ID;
     }
@@ -43,5 +38,7 @@ public abstract class Cliente {
     public void setType(String type) {
         Type = type;
     }
-  
+
+    
+
 }
