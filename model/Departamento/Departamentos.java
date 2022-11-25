@@ -13,6 +13,15 @@ public class Departamentos{
         departamentos = departs;
     }
 
+    public static Departamento searchObj(Departamento derp) {
+        for (Departamento d: departamentos){
+            if(d == derp){
+             return d;
+            }
+         }
+        return null;
+    }
+
     public static Departamento searchID(int ID) {
         for (Departamento d: departamentos){
             if(d.getID() == ID){
@@ -64,10 +73,10 @@ public class Departamentos{
         return true;
     }
 
-    public static Boolean remove(int ID) {
-        for (Departamento c: departamentos){
-           if(c.getID() == ID){
-            departamentos.remove(ID);
+    public static Boolean remove(Departamento derp) {
+        for (Departamento d: departamentos){
+           if(d == derp){
+            departamentos.remove(derp);
             return true;
            }
         }
@@ -75,16 +84,11 @@ public class Departamentos{
     }
 
     public static int lastID() {
-        return departamentos.size();
-    }
-    
-    public static Boolean update(Departamento old, Departamento now) {
-        int index;
-        index = departamentos.indexOf(old);
-        if (index != -1){
-            departamentos.set(index, now);
+        if(departamentos.size() == 0){
+            return 0;
+        }else{
+            return departamentos.get(departamentos.size() - 1).getID();
         }
-        return true;
     }
 
 }
