@@ -18,16 +18,11 @@ public class Departamento {
     }
 
     public boolean edit(String name, String city, String state, String longitude, String latitude) {
-        Departamento old;
-        Departamento now;
-        old = this;
         Name = name;
         City = city;
         State = state;
         Longitude = longitude;
         Latitude = latitude;
-        now = this;
-        Departamentos.update(old, now);
         return true;
     }
 
