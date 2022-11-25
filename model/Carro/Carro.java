@@ -24,9 +24,6 @@ public Carro(String brand, String model, int year, int price, String type, int d
 
 public boolean Edit(String brand, String model, int year, int price, String type, int department) {
     
-    Carro old;
-    Carro now;
-    old = this;
     if((brand != null) & (brand == "")){
         Brand = brand;
     }
@@ -45,8 +42,6 @@ public boolean Edit(String brand, String model, int year, int price, String type
     if((department != 0)){
         Department = department;
     }
-    now = this;
-    Carros.update(old, now);
     return true;
 }
 
