@@ -4,6 +4,16 @@ import java.util.ArrayList;
 public class Variantes {
     private static ArrayList<Variante> variantes = new ArrayList<Variante>();   
 
+
+    public static Variante searchObj(Variante var) {
+        for (Variante v: variantes){
+            if(v == var){
+             return v;
+            }
+         }
+        return null;
+    }
+
     public static Variante searchID(int ID) {
         for (Variante var: variantes){
             if(var.getID() == ID){
@@ -28,10 +38,10 @@ public class Variantes {
         return true;
     }
 
-    public static Boolean remove(int ID) {
-        for (Variante var: variantes){
-           if(var.getID() == ID){
-            variantes.remove(ID);
+    public static Boolean remove(Variante var) {
+        for (Variante v: variantes){
+           if(v == var){
+            variantes.remove(var);
             return true;
            }
         }
@@ -39,15 +49,11 @@ public class Variantes {
     }
 
     public static int lastID() {
-        return variantes.size();
+        if(variantes.size() == 0){
+            return 0;
+        }else{
+            return variantes.get(variantes.size() - 1).getID();
+        }
     }
 
-    public static Boolean update(Variante old, Variante now) {
-        int index;
-        index = variantes.indexOf(old);
-        if (index != -1){
-            variantes.set(index, now);
-        }
-        return true;
-    }
 }
