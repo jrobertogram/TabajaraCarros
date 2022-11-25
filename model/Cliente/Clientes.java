@@ -13,6 +13,16 @@ public class Clientes{
         clientes = cars;
     }
 
+
+    public static Cliente searchObj(Cliente cli) {
+        for (Cliente c: clientes){
+            if(c == cli){
+             return c;
+            }
+         }
+        return null;
+    }
+
     public static Cliente searchID(int ID) {
         for (Cliente c: clientes){
             if(c.getID() == ID){
@@ -69,28 +79,20 @@ public class Clientes{
         return true;
     }
 
-    public static Boolean remove(int ID) {
-        for (Cliente c: clientes){
-           if(c.getID() == ID){
-            clientes.remove(ID);
-            return true;
-           }
+    public  static Boolean remove(Cliente cli) {
+        if (clientes.contains(cli)) { 
+            clientes.remove(cli);
+            return true; 
         }
         return false;
     }
 
     public static int lastID() {
-        return clientes.size();
-    }
-
-    public static Boolean update(Cliente old, Cliente now) {
-        int index;
-        index = clientes.indexOf(old);
-        if (index != -1){
-            clientes.set(index, now);
+        if(clientes.size() == 0){
+            return 0;
+        }else{
+            return clientes.get(clientes.size() - 1).getID();
         }
-        
-        return true;
     }
     
   
