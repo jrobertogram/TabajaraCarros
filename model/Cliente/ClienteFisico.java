@@ -12,9 +12,6 @@ public class ClienteFisico extends Cliente {
 
     public Boolean edit(String name, int wage, String document, String city, Boolean married,
     Boolean children, Boolean countryside) {
-        Cliente old;
-        Cliente now;
-        old = this;
         super.Name = name;
         Wage = wage;
         super.Document = document;
@@ -23,8 +20,6 @@ public class ClienteFisico extends Cliente {
         Married = married;
         Children = children;
         Countryside = countryside;
-        now = this;
-        Clientes.update(old, now);
         return true;
     }
     
