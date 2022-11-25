@@ -1,7 +1,7 @@
 package model.Aluguel;
 import java.util.ArrayList;
 import java.util.Date;
-import model.Carro.Carros;
+import model.Carro.Carro;
 
 public class Alugueis{
 
@@ -13,6 +13,16 @@ public class Alugueis{
 
     public static void setAlugueis(ArrayList<Aluguel> alugueis) {
         Alugueis.alugueis = alugueis;
+    }
+
+
+    public static Aluguel searchObj(Aluguel alg) {
+        for (Aluguel a: alugueis){
+            if(a == alg){
+             return a;
+            }
+         }
+        return null;
     }
 
     public static Aluguel searchID(int ID) {
@@ -33,7 +43,7 @@ public class Alugueis{
         return null;
     }
 
-    public static ArrayList<Aluguel> searchList(String status, Date dateIincio, Date dateFinal, int intervalo, int cliente,int car ,int departamento,
+    public static ArrayList<Aluguel> searchList(String status, Date dateIincio, Date dateFinal, int intervalo, int cliente,Carro car ,int departamento,
     int pagamento) {
         
         ArrayList<Aluguel> output = new ArrayList<Aluguel>();
@@ -69,10 +79,10 @@ public class Alugueis{
                     output.add(c);
                 }
              }
-        }else if(car != 0){
+        }else if(car != null){
             for (Aluguel alg: alugueis){
-                for (Integer c: alg.getCarros()){
-                    if(c == car && Carros.searchID(car) != null){
+                for (Carro c: alg.getCarros()){
+                    if(c == car){
                        output.add(alg);
                        break;
                     }
@@ -100,10 +110,10 @@ public class Alugueis{
         return true;
     }
 
-    public static Boolean remove(int ID) {
-        for (Aluguel c: alugueis){
-           if(c.getID() == ID){
-            alugueis.remove(ID);
+    public static Boolean remove(Aluguel alg) {
+        for (Aluguel a: alugueis){
+           if(a == alg){
+            alugueis.remove(alg);
             return true;
            }
         }
@@ -111,16 +121,11 @@ public class Alugueis{
     }
 
     public static int lastID() {
-        return alugueis.size();
-    }
-
-    public static Boolean update(Aluguel old, Aluguel now) {
-        int index;
-        index = alugueis.indexOf(old);
-        if (index != -1){
-            alugueis.set(index, now);
+        if(alugueis.size() == 0){
+            return 0;
+        }else{
+            return alugueis.get(alugueis.size() - 1).getID();
         }
-        return true;
     }
   
 }
