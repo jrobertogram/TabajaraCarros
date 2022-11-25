@@ -10,12 +10,7 @@ public class Dinheiro extends Pagamento{
     }
 
     public Boolean edit(String status) {
-        Pagamento old;
-        Pagamento now;
-        old = this;
         super.status = status;
-        now = this;
-        Pagamentos.update(old, now);
         return true;
     }
 
