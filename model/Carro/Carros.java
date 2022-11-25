@@ -13,6 +13,15 @@ public class Carros{
         carros = cars;
     }
 
+    public static Carro searchObj(Carro car) {
+        for (Carro c: carros){
+            if(c == car){
+             return c;
+            }
+         }
+        return null;
+    }
+
     public static Carro searchID(int ID) {
         for (Carro c: carros){
             if(c.getID() == ID){
@@ -22,6 +31,7 @@ public class Carros{
         return null;
     }
 
+    
     public static Carro search(String brand, String model, int year, int department) {
         for (Carro c: carros){
             if(c.getBrand() == brand & c.getModel() == model & c.getYear() == year & c.getDepartment() == department){
@@ -76,10 +86,10 @@ public class Carros{
         return true;
     }
 
-    public static Boolean remove(int ID) {
+    public static Boolean remove(Carro car) {
         for (Carro c: carros){
-           if(c.getID() == ID){
-            carros.remove(ID);
+           if(c == car){
+            carros.remove(car);
             return true;
            }
         }
@@ -87,16 +97,11 @@ public class Carros{
     }
 
     public static int lastID() {
-        return carros.size();
-    }
-
-    public static Boolean update(Carro old, Carro now) {
-        int index;
-        index = carros.indexOf(old);
-        if (index != -1){
-            carros.set(index, now);
+        if(carros.size() == 0){
+            return 0;
+        }else{
+            return carros.get(carros.size() - 1).getID();
         }
-        return true;
     }
   
 }
