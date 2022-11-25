@@ -12,6 +12,15 @@ public class Pagamentos {
         pagamentos = pags;
     }
 
+    public static Pagamento searchObj(Pagamento pag) {
+        for (Pagamento p: pagamentos){
+            if(p == pag){
+             return p;
+            }
+         }
+        return null;
+    }
+
     public static Pagamento searchID(int ID) {
         for (Pagamento pag: pagamentos){
             if(pag.getID() == ID){
@@ -57,28 +66,22 @@ public class Pagamentos {
         return true;
     }
 
-    public static Boolean remove(int ID) {
-        for (Pagamento pag: pagamentos){
-           if(pag.getID() == ID){
-            pagamentos.remove(ID);
+    public static Boolean remove(Pagamento pag) {
+        for (Pagamento p: pagamentos){
+           if(p== pag){
+            pagamentos.remove(pag);
             return true;
            }
         }
         return false;
     }
-
+    
     public static int lastID() {
-        return pagamentos.size();
-    }
-
-    public static Boolean update(Pagamento old, Pagamento now) {
-        int index;
-        index = pagamentos.indexOf(old);
-        if (index != -1){
-            pagamentos.set(index, now);
+        if(pagamentos.size() == 0){
+            return 0;
+        }else{
+            return pagamentos.get(pagamentos.size() - 1).getID();
         }
-        
-        return true;
     }
     
   
