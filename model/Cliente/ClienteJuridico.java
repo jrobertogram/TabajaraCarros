@@ -10,14 +10,9 @@ public class ClienteJuridico extends Cliente {
     }
 
     public Boolean edit(String name, String document, String city) {
-        Cliente old;
-        Cliente now;
-        old = this;
         super.Name = name;
         super.Document = document;
         super.City = city;
-        now = this;
-        Clientes.update(old, now);
         return true;
     }
 
