@@ -1,4 +1,5 @@
 package model.Aluguel;
+import model.Carro.Carro;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -11,7 +12,7 @@ public class Aluguel {
     private Date DateFinal;
     private int Intervalo;
     private int Cliente;
-    private static ArrayList<Integer> carros = new ArrayList<Integer>();  
+    private static ArrayList<Carro> carros = new ArrayList<Carro>();  
     private int Departamento;
     private int Pagamento;
 
@@ -24,7 +25,7 @@ public class Aluguel {
     }
 
 
-    public Aluguel(String Status, Date dateIincio, Date dateFinal, int intervalo, int cliente, ArrayList<Integer> Carros, int departamento,
+    public Aluguel(String Status, Date dateIincio, Date dateFinal, int intervalo, int cliente, ArrayList<Carro> Carros, int departamento,
             int pagamento) {
         status = Status;
         DateIincio = dateIincio;
@@ -101,12 +102,12 @@ public class Aluguel {
     }
 
 
-    public ArrayList<Integer> getCarros() {
+    public ArrayList<Carro> getCarros() {
         return carros;
     }
 
 
-    public void setCarros(ArrayList<Integer> Carros) {
+    public void setCarros(ArrayList<Carro> Carros) {
         carros = Carros;
     }
 
@@ -130,15 +131,15 @@ public class Aluguel {
         Pagamento = pagamento;
     }
 
-    public Boolean addCarro(int var) {
-        carros.add(var);
+    public Boolean addCarro(Carro car) {
+        carros.add(car);
         return true;
     }
 
-    public  Boolean removeCarro(int ID) {
-        for (int car: carros){
-           if(car == ID){
-            carros.remove(ID);
+    public  Boolean removeCarro(Carro carr) {
+        for (Carro car: carros){
+           if(car == carr){
+            carros.remove(carr);
             return true;
            }
         }
