@@ -6,10 +6,10 @@
 
 ## 🚧 Padrões de PRrojetos
 * Template Method
-* Strategy Pattern
+* Strategy Pattern 
 * Abstract Factory
-* Singleton
-* Iterator
+* Singleton 👍
+* Iterator 👍
 * Observer
 
 ## 👀 Funcionalidades
