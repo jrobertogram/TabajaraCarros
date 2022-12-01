@@ -23,6 +23,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 
 - [ ] Tarefa 1
 - [ ] Tarefa 2
+- [ ]<a href="https://docs.google.com/document/d/1R7aps-g9YsZJuFoStexlmIWyl-59LOIgNmS_-LxAqhg/edit?usp=sharing"> Docs  </a>
 
 Ajustes e melhorias Futuras
 - [ ] Tarefa 3
