@@ -6,11 +6,11 @@
 
 ## 🚧 Padrões de PRrojetos
 * Template Method
-* Strategy Pattern 
+* Strategy Pattern 👍
 * Abstract Factory
 * Singleton 👍
 * Iterator 👍
-* Observer
+* Observer 👍 -
 
 ## 👀 Funcionalidades
 * Aluguel: terá a opção de aluguel, onde poderá alugar por hora, dia com preços dinâmico perante o tempo de contrato com funcionalidade de exlcuir, incluir, alterar opções de 'regra' de conbrança.
