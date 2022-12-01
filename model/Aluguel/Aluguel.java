@@ -1,8 +1,9 @@
 package model.Aluguel;
-import model.Carro.Carro;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import model.Pagamento.Pagamentos;
+import model.Pagamento.Pagamento;
 
 public class Aluguel {
 
@@ -12,9 +13,11 @@ public class Aluguel {
     private Date DateFinal;
     private int Intervalo;
     private int Cliente;
-    private static ArrayList<Carro> carros = new ArrayList<Carro>();  
+    private static ArrayList<Integer> carros = new ArrayList<Integer>();   
     private int Departamento;
     private int Pagamento;
+    
+
 
 
     public Aluguel(String Status, Date dateIincio, Date dateFinal, int intervalo) {
@@ -25,7 +28,7 @@ public class Aluguel {
     }
 
 
-    public Aluguel(String Status, Date dateIincio, Date dateFinal, int intervalo, int cliente, ArrayList<Carro> Carros, int departamento,
+    public Aluguel(String Status, Date dateIincio, Date dateFinal, int intervalo, int cliente, ArrayList<Integer> Carros, int departamento,
             int pagamento) {
         status = Status;
         DateIincio = dateIincio;
@@ -35,6 +38,17 @@ public class Aluguel {
         carros = Carros;
         Departamento = departamento;
         Pagamento = pagamento;
+    }
+
+    public Boolean ChangePagamento(int ID){
+        for (Pagamento pag: Pagamentos.getInstance().getPagamentos()){
+            if(pag.getID() == ID){
+                Pagamentos.getInstance().remove(Pagamentos.getInstance().searchID(getPagamento()));
+                setPagamento(ID);
+                return true;
+            }
+         }
+        return false;
     }
 
 
@@ -102,12 +116,12 @@ public class Aluguel {
     }
 
 
-    public ArrayList<Carro> getCarros() {
+    public ArrayList<Integer> getCarros() {
         return carros;
     }
 
 
-    public void setCarros(ArrayList<Carro> Carros) {
+    public void setCarros(ArrayList<Integer> Carros) {
         carros = Carros;
     }
 
@@ -131,15 +145,15 @@ public class Aluguel {
         Pagamento = pagamento;
     }
 
-    public Boolean addCarro(Carro car) {
-        carros.add(car);
+    public Boolean addCarro(int var) {
+        carros.add(var);
         return true;
     }
 
-    public  Boolean removeCarro(Carro carr) {
-        for (Carro car: carros){
-           if(car == carr){
-            carros.remove(carr);
+    public  Boolean removeCarro(int ID) {
+        for (int car: carros){
+           if(car == ID){
+            carros.remove(ID);
             return true;
            }
         }

@@ -1,12 +1,46 @@
 package model.Agente;
 import java.util.ArrayList;
 
-public class Agentes {
+import model.Container;
+import model.Iterator;
+
+public class Agentes implements Container{
 
     private static ArrayList<Agente> agentes;
+    private static Agentes instance = null;  
+    int index;
+
+    @Override
+    public Iterator getIterator() {
+       return new NameIterator();
+    }
+
+    private class NameIterator implements Iterator {
+
+        int index;
+  
+        @Override
+        public boolean hasNext() {
+        
+            if(index < agentes.size()){
+              return true;
+           }
+           return false;
+        }
+  
+        @Override
+        public Agente next() {
+        
+           if(this.hasNext()){
+            return agentes.get(index++);
+           }
+           return null;
+        }		
+     }
     
-    public static boolean authenticate(Agente agente){
-        for (Agente a: agentes){
+    public boolean authenticate(Agente agente){
+        for(Iterator iter = getIterator(); iter.hasNext();){
+            Agente a = (Agente)iter.next();
             if(a == agente){
              return true;
             }
@@ -14,8 +48,9 @@ public class Agentes {
         return false;
     }
 
-    public static boolean authenticateP(String username, String password, String type){
-        for (Agente a: agentes){
+    public boolean authenticateP(String username, String password, String type){
+        for(Iterator iter = getIterator(); iter.hasNext();){
+            Agente a = (Agente)iter.next();
             if (a.getUsername() == username && a.password == password && a.type == type){
                 return true;
             }
@@ -29,8 +64,9 @@ public class Agentes {
         return true;
     }
 
-    public  static Boolean remove(Agente cli) {
-        for (Agente c: agentes){
+    public  Boolean remove(Agente cli) {
+        for(Iterator iter = getIterator(); iter.hasNext();){
+            Agente c = (Agente)iter.next();
            if(c == cli){
             agentes.remove(cli);
             return true;
@@ -45,6 +81,13 @@ public class Agentes {
         }else{
             return agentes.get(agentes.size() - 1).getID();
         }
+    }
+
+    public static Agentes getInstance() {
+        if (instance == null) {
+			instance = new Agentes();
+        }
+        return instance;
     }
     
 }

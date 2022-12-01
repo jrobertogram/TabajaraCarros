@@ -1,20 +1,62 @@
 package model.Carro;
 import java.util.ArrayList;
 
-public class Carros{
+import model.Container;
+import model.Iterator;
 
-    private static ArrayList<Carro> carros;
+public class Carros implements Container{
 
-    public static ArrayList<Carro> getCars() {
+    private ArrayList<Carro> carros;
+    private static Carros instance = null;
+    int index;
+
+    @Override
+    public Iterator getIterator() {
+       return new NameIterator();
+    }
+
+    private class NameIterator implements Iterator {
+
+        int index;
+  
+        @Override
+        public boolean hasNext() {
+        
+            if(index < carros.size()){
+              return true;
+           }
+           return false;
+        }
+  
+        @Override
+        public Carro next() {
+        
+           if(this.hasNext()){
+            return carros.get(index++);
+           }
+           return null;
+        }		
+     }
+
+    public static Carros getInstance() {
+        if (instance == null) {
+			instance = new Carros();
+        }
+
+        return instance;
+    }
+
+    public ArrayList<Carro> getCars() {
         return carros;
     }
 
-    public static void setCars(ArrayList<Carro> cars) {
+    public void setCars(ArrayList<Carro> cars) {
         carros = cars;
     }
 
-    public static Carro searchObj(Carro car) {
-        for (Carro c: carros){
+    public Carro searchObj(Carro car) {
+        for(Iterator iter = getIterator(); iter.hasNext();){
+            Carro c = (Carro)iter.next();
             if(c == car){
              return c;
             }
@@ -22,8 +64,9 @@ public class Carros{
         return null;
     }
 
-    public static Carro searchID(int ID) {
-        for (Carro c: carros){
+    public Carro searchID(int ID) {
+        for(Iterator iter = getIterator(); iter.hasNext();){
+            Carro c = (Carro)iter.next();
             if(c.getID() == ID){
              return c;
             }
@@ -32,8 +75,9 @@ public class Carros{
     }
 
     
-    public static Carro search(String brand, String model, int year, int department) {
-        for (Carro c: carros){
+    public Carro search(String brand, String model, int year, int department) {
+        for(Iterator iter = getIterator(); iter.hasNext();){
+            Carro c = (Carro)iter.next();
             if(c.getBrand() == brand & c.getModel() == model & c.getYear() == year & c.getDepartment() == department){
              return c;
             }
@@ -42,36 +86,41 @@ public class Carros{
     }
 
 
-    public static ArrayList<Carro> searchList(String brand, String model, int year, int department, String Type) {
+    public ArrayList<Carro> searchList(String brand, String model, int year, int department, String Type) {
         
         ArrayList<Carro> output = new ArrayList<Carro>();
 
         if (brand != null){
-            for (Carro c: carros){
+            for(Iterator iter = getIterator(); iter.hasNext();){
+                Carro c = (Carro)iter.next();
                 if(c.getBrand() == brand){
                     output.add(c);
                 }
              }
         }else if(model != null){
-            for (Carro c: carros){
+            for(Iterator iter = getIterator(); iter.hasNext();){
+                Carro c = (Carro)iter.next();
                 if(c.getBrand() == model){
                     output.add(c);
                 }
              }
         }else if(year != 0){
-            for (Carro c: carros){
+            for(Iterator iter = getIterator(); iter.hasNext();){
+                Carro c = (Carro)iter.next();
                 if(c.getYear() == year){
                     output.add(c);
                 }
              }
         }else if(department != 0){
-            for (Carro c: carros){
+            for(Iterator iter = getIterator(); iter.hasNext();){
+                Carro c = (Carro)iter.next();
                 if(c.getDepartment() == department){
                     output.add(c);
                 }
              }
         }else if(Type != null){
-            for (Carro c: carros){
+            for(Iterator iter = getIterator(); iter.hasNext();){
+                Carro c = (Carro)iter.next();
                 if(c.getType() == Type){
                     output.add(c);
                 }
@@ -80,14 +129,15 @@ public class Carros{
         return output;
     }
 
-    public static Boolean add(Carro car) {
+    public Boolean add(Carro car) {
         car.setID(lastID() + 1);
         carros.add(car);
         return true;
     }
 
-    public static Boolean remove(Carro car) {
-        for (Carro c: carros){
+    public Boolean remove(Carro car) {
+        for(Iterator iter = getIterator(); iter.hasNext();){
+            Carro c = (Carro)iter.next();
            if(c == car){
             carros.remove(car);
             return true;
@@ -96,7 +146,7 @@ public class Carros{
         return false;
     }
 
-    public static int lastID() {
+    public int lastID() {
         if(carros.size() == 0){
             return 0;
         }else{

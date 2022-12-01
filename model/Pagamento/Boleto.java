@@ -1,7 +1,9 @@
 package model.Pagamento;
 import java.lang.Math;
 
-public class Boleto extends Pagamento{
+import model.PagamentosITF;
+
+public class Boleto extends Pagamento implements PagamentosITF{
 
     String Numero;
 
@@ -9,6 +11,12 @@ public class Boleto extends Pagamento{
         super.status = "Pendente";
         super.type = "Boleto";
         GerarNumero();
+    }
+
+    @Override
+    public String pagar(){
+        setStatus("Sucesso");
+        return "Boleto";
     }
 
     public Boolean edit(String status) {

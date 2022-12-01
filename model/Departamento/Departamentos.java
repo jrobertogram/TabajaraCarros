@@ -1,20 +1,61 @@
 package model.Departamento;
 import java.util.ArrayList;
 
-public class Departamentos{
+import model.Container;
+import model.Iterator;
 
-    private static ArrayList<Departamento> departamentos = new ArrayList<Departamento>();    
+public class Departamentos implements Container{
 
-    public static ArrayList<Departamento> getDepartamentos() {
+    private ArrayList<Departamento> departamentos = new ArrayList<Departamento>();    
+    private static Departamentos instance = null;
+    int index;
+
+    @Override
+    public Iterator getIterator() {
+       return new NameIterator();
+    }
+
+    private class NameIterator implements Iterator {
+
+        int index;
+  
+        @Override
+        public boolean hasNext() {
+        
+            if(index < departamentos.size()){
+              return true;
+           }
+           return false;
+        }
+  
+        @Override
+        public Departamento next() {
+        
+           if(this.hasNext()){
+            return departamentos.get(index++);
+           }
+           return null;
+        }		
+     }
+
+    public static Departamentos getInstance() {
+        if (instance == null) {
+			instance = new Departamentos();
+        }
+        return instance;
+    }
+
+    public ArrayList<Departamento> getDepartamentos() {
         return departamentos;
     }
 
-    public static void setDepartamentos(ArrayList<Departamento> departs) {
+    public void setDepartamentos(ArrayList<Departamento> departs) {
         departamentos = departs;
     }
 
-    public static Departamento searchObj(Departamento derp) {
-        for (Departamento d: departamentos){
+    public Departamento searchObj(Departamento derp) {
+        for(Iterator iter = getIterator(); iter.hasNext();){
+            Departamento d = (Departamento)iter.next();
             if(d == derp){
              return d;
             }
@@ -22,8 +63,9 @@ public class Departamentos{
         return null;
     }
 
-    public static Departamento searchID(int ID) {
-        for (Departamento d: departamentos){
+    public Departamento searchID(int ID) {
+        for(Iterator iter = getIterator(); iter.hasNext();){
+            Departamento d = (Departamento)iter.next();
             if(d.getID() == ID){
              return d;
             }
@@ -32,8 +74,9 @@ public class Departamentos{
     }
 
 
-    public static Departamento search(String name,  String city, String state) {
-        for (Departamento d: departamentos){
+    public Departamento search(String name,  String city, String state) {
+        for(Iterator iter = getIterator(); iter.hasNext();){
+            Departamento d = (Departamento)iter.next();
             if(d.getName() == name & d.getCity() == city & d.getState() == state){
              return d;
             }
@@ -41,24 +84,27 @@ public class Departamentos{
         return null;
     }
 
-    public static ArrayList<Departamento> searchList(String name,  String city, String state) {
+    public ArrayList<Departamento> searchList(String name,  String city, String state) {
         
         ArrayList<Departamento> output = new ArrayList<Departamento>();
 
         if (name != null){
-            for (Departamento d: departamentos){
+            for(Iterator iter = getIterator(); iter.hasNext();){
+                Departamento d = (Departamento)iter.next();
                 if(d.getName() == name){
                     output.add(d);
                 }
              }
         }else if(city != null){
-            for (Departamento d: departamentos){
+            for(Iterator iter = getIterator(); iter.hasNext();){
+                Departamento d = (Departamento)iter.next();
                 if(d.getCity() == city){
                     output.add(d);
                 }
              }
         }else if(state != null){
-            for (Departamento d: departamentos){
+            for(Iterator iter = getIterator(); iter.hasNext();){
+                Departamento d = (Departamento)iter.next();
                 if(d.getState() == state){
                     output.add(d);
                 }
@@ -67,14 +113,15 @@ public class Departamentos{
         return output;
     }
 
-    public static Boolean add(Departamento dpt) {
+    public Boolean add(Departamento dpt) {
         dpt.setID(lastID() + 1);
         departamentos.add(dpt);
         return true;
     }
 
-    public static Boolean remove(Departamento derp) {
-        for (Departamento d: departamentos){
+    public Boolean remove(Departamento derp) {
+        for(Iterator iter = getIterator(); iter.hasNext();){
+            Departamento d = (Departamento)iter.next();
            if(d == derp){
             departamentos.remove(derp);
             return true;
@@ -83,7 +130,7 @@ public class Departamentos{
         return false;
     }
 
-    public static int lastID() {
+    public int lastID() {
         if(departamentos.size() == 0){
             return 0;
         }else{

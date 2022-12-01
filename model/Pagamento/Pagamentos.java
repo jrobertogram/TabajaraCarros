@@ -1,38 +1,84 @@
 package model.Pagamento;
 import java.util.ArrayList;
+import model.Container;
+import model.Iterator;
+import model.PagamentosITF;
 
-public class Pagamentos {
-    private static ArrayList<Pagamento> pagamentos = new ArrayList<Pagamento>();    
+public class Pagamentos implements Container{
+    private ArrayList<Pagamento> pagamentos = new ArrayList<Pagamento>(); 
+    private static Pagamentos instance = null;   
+    int index;
+ 
+    public boolean executePagar(PagamentosITF pay){
+        pay.pagar();
+        return true;
+    }
 
-    public static ArrayList<Pagamento> getPagamentos() {
+    @Override
+    public Iterator getIterator() {
+       return new NameIterator();
+    }
+
+    private class NameIterator implements Iterator {
+
+        int index;
+  
+        @Override
+        public boolean hasNext() {
+        
+            if(index < pagamentos.size()){
+              return true;
+           }
+           return false;
+        }
+  
+        @Override
+        public Pagamento next() {
+        
+           if(this.hasNext()){
+            return pagamentos.get(index++);
+           }
+           return null;
+        }		
+     }
+		
+
+    public ArrayList<Pagamento> getPagamentos() {
         return pagamentos;
     }
 
-    public static void setPagamentos(ArrayList<Pagamento> pags) {
+    public void setPagamentos(ArrayList<Pagamento> pags) {
         pagamentos = pags;
     }
 
-    public static Pagamento searchObj(Pagamento pag) {
-        for (Pagamento p: pagamentos){
-            if(p == pag){
-             return p;
+    public Pagamento searchObj(Pagamento pag) {
+
+        for(Iterator iter = getIterator(); iter.hasNext();){
+            Object p = iter.next();
+            Pagamento pp = (Pagamento)p;
+            if(pp == pag){
+                return pp;
+               }
             }
-         }
-        return null;
+           return null;
     }
 
-    public static Pagamento searchID(int ID) {
-        for (Pagamento pag: pagamentos){
+    public Pagamento searchID(int ID) {
+        for(Iterator iter = getIterator(); iter.hasNext();){
+            Object pp = iter.next();
+            Pagamento pag = (Pagamento)pp;
             if(pag.getID() == ID){
-             return pag;
+                return pag;
+               }
             }
-         }
-        return null;
+           return null;
     }
 
 
-    public static Pagamento search(String status, String type, float valueTotal, float valueFinal) {
-        for (Pagamento pag: pagamentos){
+    public Pagamento search(String status, String type, float valueTotal, float valueFinal) {
+        for(Iterator iter = getIterator(); iter.hasNext();){
+            Object pp = iter.next();
+            Pagamento pag = (Pagamento)pp;
             if(pag.getStatus() == status  & pag.getType() == type & pag.getValueTotal() == valueTotal & pag.getValueFinal() == valueFinal){
              return pag;
             }
@@ -40,18 +86,22 @@ public class Pagamentos {
         return null;
     }
 
-    public static ArrayList<Pagamento> searchList(String status, String type) {
+    public ArrayList<Pagamento> searchList(String status, String type) {
         
         ArrayList<Pagamento> output = new ArrayList<Pagamento>();
 
         if (status != null){
-            for (Pagamento pag: pagamentos){
+            for(Iterator iter = getIterator(); iter.hasNext();){
+                Object pp = iter.next();
+                 Pagamento pag = (Pagamento)pp;
                 if(pag.getStatus() == status){
                     output.add(pag);
                 }
              }
         }else if(type != null){
-            for (Pagamento pag: pagamentos){
+            for(Iterator iter = getIterator(); iter.hasNext();){
+                Object pp = iter.next();
+                Pagamento pag = (Pagamento)pp;
                 if(pag.getType() == type){
                     output.add(pag);
                 }
@@ -60,14 +110,16 @@ public class Pagamentos {
         return output;
     }
 
-    public static Boolean add(Pagamento pag) {
+    public Boolean add(Pagamento pag) {
         pag.setID(lastID() + 1);
         pagamentos.add(pag);
         return true;
     }
 
-    public static Boolean remove(Pagamento pag) {
-        for (Pagamento p: pagamentos){
+    public Boolean remove(Pagamento pag) {
+        for(Iterator iter = getIterator(); iter.hasNext();){
+            Object pp = iter.next();
+            Pagamento p = (Pagamento)pp;
            if(p== pag){
             pagamentos.remove(pag);
             return true;
@@ -76,7 +128,7 @@ public class Pagamentos {
         return false;
     }
     
-    public static int lastID() {
+    public int lastID() {
         if(pagamentos.size() == 0){
             return 0;
         }else{
@@ -84,5 +136,11 @@ public class Pagamentos {
         }
     }
     
-  
+    public static Pagamentos getInstance() {
+        if (instance == null) {
+			instance = new Pagamentos();
+        }
+        return instance;
+    }
+
 }

@@ -1,6 +1,8 @@
 package model.Pagamento;
 
-public class CartãoCredito  extends Pagamento{
+import model.PagamentosITF;
+
+public class CartãoCredito  extends Pagamento implements PagamentosITF{
 
     private String Name;
     private String numero;
@@ -13,6 +15,12 @@ public class CartãoCredito  extends Pagamento{
         super.type = "CartãoCredito";
     }
     
+    @Override
+    public String pagar(){
+        setStatus("Sucesso");
+        return "CartãoCredito";
+    }
+
     public CartãoCredito(String name, String numero, String validade, String cVV) {
         Name = name;
         this.numero = numero;

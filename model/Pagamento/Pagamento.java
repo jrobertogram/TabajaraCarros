@@ -65,7 +65,7 @@ public abstract class Pagamento {
         Variante objVariante;
         this.valueVariantes = 0;
         for (Integer var: variantes){
-            objVariante =  Variantes.searchID(var);
+            objVariante =  Variantes.getInstance().searchID(var);
             this.valueVariantes += objVariante.getValue();
          }
     }

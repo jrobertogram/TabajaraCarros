@@ -1,7 +1,9 @@
 package model.Pagamento;
 import java.security.SecureRandom;
 
-public class Pix extends Pagamento {
+import model.PagamentosITF;
+
+public class Pix extends Pagamento implements PagamentosITF{
 
     String chave;
 
@@ -9,6 +11,12 @@ public class Pix extends Pagamento {
         super.status = "Pendente";
         super.type = "Pix";
         GerarChave();
+    }
+
+    @Override
+    public String pagar(){
+        setStatus("Sucesso");
+        return "Pix";
     }
 
     public Boolean edit(String status) {

@@ -1,12 +1,20 @@
 package model.Pagamento;
 
-public class Dinheiro extends Pagamento{
+import model.PagamentosITF;
+
+public class Dinheiro extends Pagamento implements PagamentosITF{
     private float valorRecebido;
     private float valorTroco;
 
     public Dinheiro() {
         super.status = "Pendente";
         super.type = "Dinheiro";
+    }
+
+    @Override
+    public String pagar(){
+        setStatus("Sucesso");
+        return "Dinheiro";
     }
 
     public Boolean edit(String status) {
