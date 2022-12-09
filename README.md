@@ -5,12 +5,9 @@
 > O projeto consiste, em criar um sistema utlizando a linguagem de programação orientada a objetos JAVA, O sistema terá a função de corresponder a necessidade de aluguel de carros, onde a empresa que expandir seu negócio para o novo mundo tecnológico e atrair mais cliente a alugar carros através do site da locadora de veículos, se tornado mais pratico ao cliente e aumentando seus lucros acompanhado o mercado tecnológico que esta se expandindo rapidamente.
 
 ## 🚧 Padrões de PRrojetos
-* Template Method
 * Strategy Pattern 👍
-* Abstract Factory
 * Singleton 👍
 * Iterator 👍
-* Observer 👍 -
 
 ## 👀 Funcionalidades
 * Aluguel: terá a opção de aluguel, onde poderá alugar por hora, dia com preços dinâmico perante o tempo de contrato com funcionalidade de exlcuir, incluir, alterar opções de 'regra' de conbrança.
